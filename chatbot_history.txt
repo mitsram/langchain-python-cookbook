@@ -1,0 +1,2 @@
+HumanMessage(content="I like tomatoes, what should I eat?")
+AIMessage(content="You should try a fresh tomato salad with basil and mozzarella.")
