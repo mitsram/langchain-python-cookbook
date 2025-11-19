@@ -4,3 +4,7 @@ python_dotenv
 langchain_core
 pydantic
 langchain
+langchain_huggingface
+sentence-transformers
+scikit-learn
+faiss-cpu
