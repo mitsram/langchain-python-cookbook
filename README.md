@@ -7,7 +7,6 @@ A collection of practical examples and recipes for building applications with La
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Environment Setup](#environment-setup)
-- [Project Structure](#project-structure)
 - [Quickstart Guide](#quickstart-guide)
 - [Usage Examples](#usage-examples)
 
@@ -82,29 +81,6 @@ GOOGLE_API_KEY=AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Optional: Add other API keys as needed
 # OPENAI_API_KEY=sk-...
 # ANTHROPIC_API_KEY=sk-ant-...
-```
-
-## Project Structure
-
-```
-langchain-python-cookbook/
-├── 01.llm-interaction/       # Basic LLM interactions
-│   └── chatmodel_gemini.py   # Simple Gemini model usage
-├── 02.chatbots/              # Chatbot implementations
-│   ├── chatbot.py            # Interactive chatbot with history
-│   ├── chat_prompt_template.py
-│   └── message_placeholder.py
-├── 03.structured-output/     # Structured data generation
-│   ├── structured_output.py
-│   ├── pydantic_structured_output.py
-│   └── detailed_output_structure.py
-├── 04.output-parsers/        # Output parsing examples
-│   ├── str_ouput_parser.py
-│   ├── pydantic_parser.py
-│   └── structured_output_parser.py
-├── dependencies.txt          # Required Python packages
-├── .env                      # Environment variables (create this)
-└── README.md                 # This file
 ```
 
 ## Quickstart Guide
