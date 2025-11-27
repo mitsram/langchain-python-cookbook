@@ -1,3 +1,20 @@
+# Embeddings are numerical vector representations of text (or other data).
+# They capture semantic meaning so that similar texts are close together in vector space.
+# In LangChain, embeddings are the backbone of retrieval-augmented generation (RAG): you embed documents, store them in a vector database, and retrieve the most relevant ones at query time.
+
+# Definition: A workflow where you:
+#   Embed documents (using any embedding model).
+#   Store them in a vector store (like FAISS, Pinecone, Weaviate).
+#   At query time, embed the user’s question.
+#   Retrieve nearest neighbors (similar docs).
+#   Feed those docs into the LLM to generate an answer.
+# Embeddings in Basic RAG:
+#   Often use OpenAI embeddings (text-embedding-ada-002) or other default providers.
+#   These embeddings are general-purpose, trained for semantic similarity.
+# Practical Guidance:
+# If you want fast prototyping and reliable embeddings, use basic RAG with OpenAI embeddings.
+
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from langchain_community.document_loaders import TextLoader

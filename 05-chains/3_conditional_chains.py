@@ -1,3 +1,13 @@
+# Definition: Chains that branch based on conditions.
+# How it works:
+#   You define a condition function (e.g., if input contains “math”, go to calculator chain; else go to summarizer chain).
+#   The chain routes execution accordingly.
+# Use Case: Decision-making pipelines:
+#   Route customer queries to different LLMs/tools depending on intent.
+#   Handle fallback logic (e.g., if parsing fails, retry with a different prompt).
+# Practical Guidance:
+#   Use ConditionalChain when you need routing logic (like intent classification).
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate

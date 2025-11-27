@@ -1,3 +1,14 @@
+# Definition: Chains that run one after another in sequence.
+# How it works:
+#   Output of one chain becomes the input to the next.
+#   Can be SimpleSequentialChain (just pass text) or SequentialChain (pass multiple variables).
+# Use Case: Multi-step workflows like:
+#   Generate an outline → expand into sections → polish into final essay.
+#   Extract data → transform → store.
+# Practical Guidance:
+#   Use SequentialChain when building multi-step workflows (like your automation frameworks).
+
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate

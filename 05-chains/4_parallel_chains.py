@@ -1,3 +1,14 @@
+# Definition: Chains that run multiple subchains in parallel and combine results.
+# How it works:
+#   Each subchain executes independently.
+#   Results are aggregated into a single output dictionary.
+# Use Case: Efficiency and multi-perspective tasks:
+#   Ask multiple LLMs for answers simultaneously.
+#   Run summarization + sentiment analysis + keyword extraction in parallel on the same text.
+# Practical Guidance:
+#   Use ParallelChain when you want multiple analyses at once (e.g., log streaming + summarization + tagging).
+
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate

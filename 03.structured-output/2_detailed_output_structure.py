@@ -1,20 +1,32 @@
+# Definition: You specify a schema (often JSON or a structured response type) that the LLM must follow.
+# How it works:
+#   LangChain instructs the model to return data in a predictable format.
+#   The schema can be simple (like a JSON dictionary) or more complex (nested structures).
+# Practical Guidance:
+#   The output is captured in the agent’s state under structured_response.
+#   Use detailed structured output if you just need predictable JSON and can tolerate occasional formatting issues.
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
-from typing import TypedDict, Annotated, Literal, Optional
-from pydantic import BaseModel, Field
+from typing import TypedDict, Annotated, Optional
 
 load_dotenv()
 
 model = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 
-class Review(BaseModel):
-    key_themes: list[str] = Field(description="Key themes to focus on during the trip")
-    summary: str = Field(description="A brief summary of the travel plan")
-    sentiment: Literal["positive", "neutral", "negative"] = Field(description="Overall sentiment of the travel plan")
-    name: Optional[str] = Field(description="Name of the reviewer, if available")
+# schema
+class TravelPlan(TypedDict):
+    key_themes: Annotated[list[str], "Key themes to focus on during the trip"]
+    destination: Annotated[str, "The main destination of the trip"]
+    duration_days: int
+    activities: list[str]
+    budget_usd: float
+    pros: Optional[Annotated[list[str], "Pros of the travel plan"]]
+    cons: Optional[Annotated[list[str], "Cons of the travel plan"]]
 
-structured_model = model.with_structured_output(Review, strict=True)
+structured_model = model.with_structured_output(TravelPlan)
 
+# prompt = "Create a travel plan for a 5-day trip to Japan with a budget of $2000."
 prompt = """Tokyo, Japan stands as one of the world's most captivating destinations, where ancient traditions seamlessly blend with cutting-edge technology and modern innovation. This sprawling metropolis of over 14 million people offers an extraordinary tapestry of experiences, from serene temple gardens and traditional tea ceremonies to neon-lit entertainment districts and Michelin-starred restaurants. The city's efficient public transportation system makes it remarkably easy to explore diverse neighborhoods, each with its own distinct character and charm.
 
 The cultural richness of Tokyo is unparalleled, encompassing everything from the historic Senso-ji Temple in Asakusa to the futuristic architecture of Odaiba. Visitors can witness the disciplined chaos of the Shibuya crossing, find tranquility in the Meiji Shrine's forested grounds, experience the otaku culture of Akihabara's electronics district, or shop in the luxury boutiques of Ginza. The city's culinary scene is legendary, offering not just sushi and ramen, but an entire universe of regional Japanese cuisine, street food, izakaya experiences, and innovative fusion restaurants that have earned Tokyo more Michelin stars than any other city in the world.
@@ -23,11 +35,7 @@ For a traveler seeking an immersive 6-day experience in Tokyo with a budget of $
 
 Please create a comprehensive travel plan that identifies the key themes defining this Tokyo adventure, such as culinary exploration, cultural immersion, modern technology experiences, traditional arts, or urban discovery. Include a curated list of activities that showcase Tokyo's diversity: perhaps early morning visits to Tsukiji Outer Market, exploring the digital art installations at teamLab Borderless, experiencing a traditional tea ceremony, visiting historic temples and shrines, discovering quirky themed cafes, enjoying cherry blossoms or seasonal festivals, taking day trips to nearby areas, and experiencing Tokyo's legendary nightlife in districts like Shinjuku or Roppongi.
 
-Provide a realistic budget breakdown covering accommodation in a well-located hotel or ryokan, transportation including a JR Pass or IC card for unlimited metro travel, dining experiences ranging from conveyor belt sushi to kaiseki dinners, activity fees and entrance tickets, and shopping or souvenir budget. Also outline the compelling pros of this itinerary—what makes it special and why Tokyo is worth visiting—as well as honest cons such as language barriers, potential culture shock, the fast pace of the city, budget constraints, or physical demands of extensive walking and navigating crowded areas.
-
-Reviewed by Mitchell
-
-"""
+Provide a realistic budget breakdown covering accommodation in a well-located hotel or ryokan, transportation including a JR Pass or IC card for unlimited metro travel, dining experiences ranging from conveyor belt sushi to kaiseki dinners, activity fees and entrance tickets, and shopping or souvenir budget. Also outline the compelling pros of this itinerary—what makes it special and why Tokyo is worth visiting—as well as honest cons such as language barriers, potential culture shock, the fast pace of the city, budget constraints, or physical demands of extensive walking and navigating crowded areas."""
 
 
 result = structured_model.invoke(prompt)

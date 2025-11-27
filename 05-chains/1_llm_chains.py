@@ -1,3 +1,13 @@
+# Definition: The most basic chain — a single prompt template + an LLM + an output parser.
+# How it works:
+#   You pass input variables into a prompt.
+#   The LLM generates a response.
+#   Optionally, the response is parsed (e.g., into text or structured data).
+# Use Case: 
+#   Simple Q&A, summarization, or any single-step LLM task.
+# Practical Guidance:
+#   Start with LLMChain for simple prototypes.
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate

@@ -1,3 +1,11 @@
+# Purpose: Enforces type-safe structured outputs using Pydantic models.
+# How it works:
+#   You define a Pydantic class with fields and types.
+#   LangChain instructs the LLM to produce JSON that matches the model.
+#   The parser validates and converts the output into a Pydantic object.
+# Practical Guidance:
+#   Use Pydantic Output Parser when you want robust, validated, type-safe objects — especially if the output feeds into downstream systems.
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate

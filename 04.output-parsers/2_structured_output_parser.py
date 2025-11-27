@@ -1,3 +1,11 @@
+# Purpose: General-purpose parser for structured outputs.
+# How it works:
+#   You define a schema (often via ResponseSchema objects).
+#   LangChain guides the LLM to produce text that matches the schema.
+#   The parser then extracts values from the text into a Python dictionary.
+# Practical Guidance:
+#   Use Structured Output Parser when you need a dict with multiple fields but don’t need strict type validation.
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate

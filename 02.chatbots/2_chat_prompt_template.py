@@ -1,3 +1,10 @@
+# Definition: A way to define reusable, structured prompts for chat models.
+# How it works:
+#   You create a ChatPromptTemplate with placeholders for variables.
+#   It ensures consistent formatting of system, user, and assistant messages.
+# Practical Guidance:
+#   Move to chat prompt templates when you want reusable, clean prompts.
+
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage

@@ -1,3 +1,10 @@
+# Definition: The simplest chatbot setup in LangChain — just a chat model (like ChatOpenAI) with a prompt and response loop.
+# How it works:
+#   You feed user input directly into the LLM.
+#   The model returns a response (usually plain text).
+# Practical Guidance:
+#   Start with a basic chatbot for quick experiments.
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from dotenv import load_dotenv

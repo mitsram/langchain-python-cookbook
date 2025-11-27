@@ -1,3 +1,10 @@
+# Purpose: Simplest parser — just returns the raw string output from the LLM.
+# How it works:
+#  No schema, no validation.
+#  Whatever the LLM outputs is passed through as a string.
+# Practical Guidance:
+#   Use StrOutputParser when you just want the raw text.
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate

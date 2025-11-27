@@ -1,3 +1,10 @@
+# Definition: A minimal schema-driven approach where you ask the LLM to return output in a structured format (usually JSON or key-value pairs).
+# How it works:
+#   You define a schema (e.g., fields like title, summary, keywords).
+#   LangChain adds instructions to the prompt so the LLM outputs in that format.
+#   The result is parsed into a Python dictionary.
+
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from typing import TypedDict

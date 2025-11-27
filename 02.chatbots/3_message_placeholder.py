@@ -1,3 +1,10 @@
+# Definition: A special placeholder inside a ChatPromptTemplate that lets you inject dynamic messages (like conversation history or tool outputs).
+# How it works:
+#   Instead of just {variable}, you can use MessagesPlaceholder("history").
+#   At runtime, you pass in a list of messages (user/assistant turns).
+# Practical Guidance:
+#   Use message placeholders when building stateful bots with memory or multi-turn context.
+
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 chat_template = ChatPromptTemplate([
